@@ -1,0 +1,25 @@
+<div class="panel" id="news">
+  <section class="content news-wrapper center">
+    <a name="news"></a>
+    <h2 class="h1">Jak to wygląda</h2>
+    <p class="intro">Galerie z poprzednich edycji.</p>
+    <div class="news-container">
+
+      <% page.posts.filter(function(item) {
+          var data = item.categories.data
+          return (data.length && data[0].name === 'gallery')
+         })
+         .slice(0, 3)
+         .each(function(item){
+      %>
+
+       <%- partial('article-box', {item: item}) %>
+
+      <% }); %>
+
+    </div>
+    <div class="gallery-button">
+      <a href="<%- config.root %>categories/gallery/" class="button">Więcej zdjęć</a>
+    </div>
+  </section>
+</div>

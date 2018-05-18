@@ -1,0 +1,11 @@
+<% if (page.category) { %>
+  <article class="page">
+    <section class="content">
+      <% page.posts.each(function(item){ %>
+          <%- partial('_partial/article-box', {item: item}) %>
+      <% }); %>
+
+      <%- partial('_partial/pagination') %>
+  	</section>
+  </article>
+<% } %>

@@ -1,0 +1,24 @@
+<div class="panel light-grey" id="news">
+  <section class="content center news-wrapper">
+    <a name="news"></a>
+    <h2 class="h1">Co u nas</h2>
+    <p class="intro">Nowinki.</p>
+    <div class="news-container">
+
+      <% page.posts.filter(function(item) {
+        var data = item.categories.data
+        return (data.length && data[0].name === 'blog')
+       })
+       .slice(0, 3)
+       .each(function(item){ %>
+
+         <%- partial('article-box', {item: item}) %>
+
+      <% }); %>
+
+    </div>
+    <div class="gallery-button">
+      <a href="<%- config.root %>categories/blog/" class="button">Wszystkie wpisy</a>
+    </div>
+  </section>
+</div>
