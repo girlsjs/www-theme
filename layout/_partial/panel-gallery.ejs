@@ -1,3 +1,7 @@
+<%
+  include('../_helpers')
+%>
+
 <div class="panel" id="news">
   <section class="content news-wrapper center">
     <a name="news"></a>
@@ -5,12 +9,9 @@
     <p class="intro">Galerie z poprzednich edycji.</p>
     <div class="news-container">
 
-      <% page.posts.filter(function(item) {
-          var data = item.categories.data
-          return (data.length && data[0].name === 'gallery')
-         })
-         .slice(0, 3)
-         .each(function(item){
+      <% getPosts('gallery')
+           .slice(0, 3)
+           .each(function(item){
       %>
 
        <%- partial('article-box', {item: item}) %>

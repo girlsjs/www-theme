@@ -1,17 +1,7 @@
 <%
- var posts = site.posts.filter(function(item) {
-      var data = item.categories.data
-      return (data.length && data[0].name === 'team')
-    });
+  include('../_helpers')
 
-    posts.data.reverse();
-
-    posts.data.sort((a, b) => {
-      var indexA = /-(\d+)-/g.exec(a.path)[1]
-      var indexB = /-(\d+)-/g.exec(b.path)[1]
-
-      return indexA - indexB;
-    })
+  var posts = getPostsOrderedByName('team')
 %>
 
 <div class="content-wrapper light-grey">

@@ -1,0 +1,104 @@
+.content.materials {
+  margin-bottom: 0px;
+}
+
+.file-main {
+  width: 39%;
+  margin-right: 63%;
+  margin-left: 7%;
+  text-align: right;
+}
+
+@media screen and (max-width: 650px) {
+  .file-main {
+    width: 100%;
+    margin-left: 0;
+    margin-left: 0;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .file-main-arrow {
+    visibility: hidden;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .file-main-arrow {
+    display: none;
+  }
+}
+
+.files {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.file {
+  background: #f2f2f2;
+  border: solid 1px #d8d8d8;
+  position: relative;
+  padding-left: 60px;
+  margin: 0 18px 30px;
+  flex-grow: 1;
+  flex-basis: 40%;
+}
+
+@media screen and (max-width: 650px) {
+  .file {
+    flex-basis: 100%;
+  }
+}
+
+.file:before {
+  content: "";
+  width: 70px;
+  height: 135px;
+  background: url(../img/download.png) no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+}
+
+.materials h3 {
+  margin: 6px;
+  clear: none;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+article.col2 .file h3:after,
+.materials h3:after {
+  display: none;
+}
+
+article.file p {
+  margin: 6px;
+  line-height: 24px;
+  font-size: 16px;
+  color: #8c8c8c;
+}
+
+@media screen and (max-width: 425px) {
+  article.file p {
+    text-align: left;
+  }
+}
+
+.materials-thumbnail {
+  position: relative;
+  float: right;
+  width: 50%;
+}
+
+@media screen and (max-width: 650px) {
+  .materials-thumbnail {
+    float: none;
+    width: 70%;
+    margin: auto;
+  }
+}

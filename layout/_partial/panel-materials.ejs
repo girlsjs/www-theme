@@ -1,64 +1,53 @@
+<%
+  include('../_helpers')
+
+  var posts = getPostsOrderedByName('panel-materials');
+
+  var main = posts.slice(0, 1).data.pop();
+  var rest = posts.slice(1);
+%>
 <div class="panel white" id="materials">
   <section class="content materials">
     <a name="materials"></a>
     <h2 class="h1">Materiały</h2>
     <div class="entry-meta">Licencja CC-BY-NC-SA</div>
-    <article id="post-199">
+
+    <article>
       <div class="materials-thumbnail">
         <img width="550" height="364" src="<%- config.root %>img/laptop-shadow.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" />
       </div>
       <div class="file-main">
-        <h3 class="entry-title"><a href="https://girlsjs.github.io/kurs/slides/">Interaktywna galeria [190MB]</a></h3>
+        <h3 class="entry-title"><a href="<%- main.url %>"><%- main.title %>!</a></h3>
         <div class="entry-main-content">
-          <p>Jak stworzyć galerię zdjęć na swojej stronie, poznając przy tym podstawy JavaScriptu? Uczestniczki trzech edycji girls.js Warszawa już to wiedzą. <br>(<a href="https://girlsjs.github.io/kurs/slides/index-ua.html">Wersja ukraińska.</a>)</p>
-          <p><img
-            src="<%- config.root %>img/szczalka.png" alt="" width="181" height="51" scale="0"></p>
+          <%- main.content %>
+          <p class="file-main-arrow">
+            <img src="<%- config.root %>img/szczalka.png" alt="" width="181" height="51" scale="0" />
+          </p>
         </div>
         <!-- .entry-content -->
       </div>
     </article>
     <!-- #post-## -->
     <div class="clearfix"></div>
-    <div style="margin: 25px"></div>
-    <article id="post-213" style="display: inline-block;" class="col2 left">
-      <div class="file">
-        <h3 class="entry-title"><a href="https://girlsjs.github.io/kurs/follow-ups/cookies/slides/">Co w ciastku siedzi?</a></h3>
-        <div class="entry-main-content">
-          <p>…czyli jak zaimplementować na stronie informację o ciasteczkach.</p>
-        </div>
-        <!-- .entry-content -->
-      </div>
-    </article>
-    <!-- #post-## -->
-    <article id="post-384" style="display: inline-block;" class="col2 left">
-      <div class="file">
-        <h3 class="entry-title"><a href="https://girlsjs.github.io/kurs/follow-ups/functions/">Funkcje</a></h3>
-        <div class="entry-main-content">
-          <p>Do czego przydają się funkcje?</p>
-        </div>
-        <!-- .entry-content -->
-      </div>
-    </article>
-    <!-- #post-## -->
-    <article id="post-214" style="display: inline-block;" class="col2 right">
-      <div class="file">
-        <h3 class="entry-title"><a href="https://girlsjs.github.io/kurs/follow-ups/arrays-objects/">Tablice i obiekty</a></h3>
-        <div class="entry-main-content">
-          <p>Podstawowe koncepty programistyczne w wydaniu javascriptowym.</p>
-        </div>
-        <!-- .entry-content -->
-      </div>
-    </article>
-    <!-- #post-## -->
-    <article id="post-670" style="display: inline-block;" class="col2 right">
-      <div class="file">
-        <h3 class="entry-title"><a href="https://girlsjs.gitbooks.io/poznan2018/content/">Wyprawy kosmiczne</a></h3>
-        <div class="entry-main-content">
-          <p>Materiał dwudniowego kursu z girls.js Poznań. Lecimy!</p>
-        </div>
-        <!-- .entry-content -->
-      </div>
-    </article>
-    <!-- #post-## -->
+
+    <div class="files">
+      <%
+        rest.each(function(item) {
+      %>
+
+        <article class="file">
+          <h3 class="entry-title">
+            <a href="<%- item.url %>">
+              <%- item.title %>
+            </a>
+          </h3>
+          <div class="entry-main-content">
+            <%- item.content %>
+          </div>
+        </article>
+
+      <% }); %>
+    </div>
+
   </section>
 </div>

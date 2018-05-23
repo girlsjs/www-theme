@@ -1,0 +1,23 @@
+<%
+
+  getPosts = cat =>
+    site.posts.filter(item => {
+      var data = item.categories.data
+      return data.length && data.find(i => i.name === cat)
+    });
+
+  getPostsOrderedByName = cat => {
+    var posts = getPosts(cat)
+
+    posts.data.sort((a, b) => {
+      var indexA = /-(\d+)/g.exec(a.path)[1]
+      var indexB = /-(\d+)/g.exec(b.path)[1]
+
+      return indexA - indexB;
+    })
+
+    return posts;
+  }
+
+
+%>
