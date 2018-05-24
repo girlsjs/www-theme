@@ -10,8 +10,9 @@
     <div class="news-container">
       <%
         getPosts('media')
+         .sort('date', -1)
          .slice(0, 3)
-         .each(function(item){ 
+         .each(function(item){
       %>
 
          <%- partial('article-box', {item: item}) %>

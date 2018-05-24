@@ -1,0 +1,16 @@
+
+<div class="post-gallery">
+  <% if (photos.length){ %>
+    <%
+      photos.forEach(function(photo) {
+        var path = config.root + photo;
+    %>
+      <a class="post-gallery-photo" style="background-image: url(<%- path %>);" href="<%-path %>"></a>
+    <% }); %>
+  <% } %>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      lightGallery(document.querySelector('.post-gallery'));
+    });
+  </script>
+</div>

@@ -5,12 +5,12 @@
     <p class="intro">Nowinki.</p>
     <div class="news-container">
 
-      <% page.posts.filter(function(item) {
-        var data = item.categories.data
-        return (data.length && data[0].name === 'blog')
-       })
-       .slice(0, 3)
-       .each(function(item){ %>
+      <%
+       getPosts('blog')
+         .sort('date', -1)
+         .slice(0, 3)
+         .each(function(item){
+      %>
 
          <%- partial('article-box', {item: item}) %>
 
