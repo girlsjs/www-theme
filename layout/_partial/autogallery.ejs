@@ -1,16 +1,48 @@
+<%
+
+%>
+
 
 <div class="post-gallery">
-  <% if (photos.length){ %>
-    <%
-      photos.forEach(function(photo) {
-        var path = config.root + photo;
-    %>
-      <a class="post-gallery-photo" style="background-image: url(<%- path %>);" href="<%-path %>"></a>
-    <% }); %>
-  <% } %>
+  <% if (photos.length) {
+
+      // https://stackoverflow.com/a/37826698/1003033
+      const chunks = photos.reduce((all, one, i) => {
+         const ch = Math.floor(i/3);
+         all[ch] = [].concat((all[ch]||[]),one);
+
+         return all
+      }, [])
+
+      chunks.forEach(function(photos, chunkIndex) {
+        var layout = 'post-gallery-layout-' + ((chunkIndex %3 ) + 1);
+  %>
+    <div class="<%- layout %>">
+  <%
+
+        photos.forEach(function(photo, photoIndex) {
+          var path = config.root + photo;
+          var photoClass = 'post-gallery-photo-' + (photoIndex + 1)
+  %>
+
+      <a
+        class="post-gallery-photo <%- photoClass %>"
+        style="background-image: url(<%- path %>);"
+        data-src="<%-path %>"
+        href="<%-path %>"
+      ></a>
+
+  <%
+        });
+  %>
+    </div>
+  <%
+      });
+    }
+  %>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      lightGallery(document.querySelector('.post-gallery'));
+      lightGallery(document.querySelector('.post-gallery'), { selector: 'a' });
     });
   </script>
 </div>
